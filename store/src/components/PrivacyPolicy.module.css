@@ -1,0 +1,16 @@
+
+
+:root {
+display: flex;
+
+    flexGrow: 1; 
+    /* margin: theme.spacing(2), */
+  }
+  
+  
+  .paper {
+    
+    textAlign: left; 
+
+    
+  }

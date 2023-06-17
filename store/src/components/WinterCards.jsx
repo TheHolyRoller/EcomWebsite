@@ -175,16 +175,12 @@ import { CartContext } from '../CartContext';
 
 import { useContext, useRef, useEffect, useState } from 'react';
 
-import { PRODUCTS } from '../Data/products';
-// import { winterPRODUCTS } from '../Data/winterPRODUCTS'; 
+// import { PRODUCTS } from '../Data/products';
+import { winterPRODUCTS } from '../Data/winterPRODUCTS'; 
 
 
 
-const Cards = (props) => {
-
-
-  console.log("this is the props id"); 
-  console.log(props.id); 
+const WinterCards = (props ) => {
   
   const cart = useContext(CartContext);
   
@@ -193,6 +189,9 @@ const Cards = (props) => {
   const [selectedId, setSelectedId] = useState(null);
   
   const productId = useParams();    
+
+  console.log("this is the product id "); 
+  console.log(productId); 
   
   const product = props.product; 
   
@@ -209,17 +208,31 @@ const Cards = (props) => {
       cardRefs.current[id - 1] = element;
     }
   };
+
   
   
   const handleClick = (id) => {
     setSelectedId(id);
+
+    
   };
+
+  
+
+  
+
     return (
       <>
+
+      {/* Wrap this whole thing in a div */}
+      {/* <div className={classes.root} ></div> */}
+      
       <CssBaseline />
+
       <Paper   position="sticky"  className="paper" sx={{background: "#0a1929", mt: 4, color: "#ffffff"}} style={{maxWidth: "99vw"}}  >
       <Grid  sx={{m: 3, background: "#001e3b"}} style={{minHeight: "30vh", maxWidth: "90vw" }}  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
       <Grid sx={{background: "#001e3b"}}  style={{minHeight: "30vh"}}  xs={12} sm={4}>
+
       <Card   key={props.id}
         ref={(element) => assignRef(element, props.id)} // assign a ref object to the card element
         className={props.productClass}
@@ -236,16 +249,20 @@ const Cards = (props) => {
                   {props.title }
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                ${props.price}
-                
+                   
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
               <Button size="small" color="primary">
+
               <Link to={`/${props.id}`}>View Details</Link> 
+      
+      
               </Button>
             </CardActions>
+            
+
             { productQuantity > 0 ?
                     <>
                         <Form as={Row}>
@@ -260,12 +277,24 @@ const Cards = (props) => {
                     :
                     <Button variant="primary" onClick={() => cart.addOneToCart(product.id)}>Add To Cart</Button>
                 }
+            
+            
           </Card>
       </Grid>
+      
+          
       </Grid>
       </Paper>
                 </>
         )
+    
+    
+  
+
+ 
+
+  
+  
 }
 
-export default Cards
+export default WinterCards

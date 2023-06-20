@@ -1,30 +1,5 @@
 /** 
 
-Okay so let's just talk things through now. 
-
-
-The main focus for now is getting the star rating component working and then getting the 
-average rating component working. 
-
-Once that is done then we can style each review and position all the cards and review section. 
-
-And then add a few more finishing touches to that. 
-
-I've decided not to move the review component to a different page. 
-
-There are just too many things to fix and get working and the current solutions just 
-don't seem to work so I'm keeping the reviews on the same page. 
-
-I'll just tuck them away at the bottom of the page above the footer. 
-
-
-Right so now I need to add the start rating feature. 
-
-
-
-
-
-
 
 
 
@@ -64,6 +39,9 @@ import CartProduct from '../Data/CartProduct';
 
 import { useState, useContext, useEffect, useRef } from 'react';
 
+
+
+import Logo from '../assets/LightLogo.svg'; 
 
 
 function CollapsibleExample() {
@@ -119,33 +97,57 @@ const SearchBar = BackToTopButton;
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
       
-        <Navbar.Brand href="/" style={{marginLeft: "4vw"}} >React-Bootstrap</Navbar.Brand>
+      
+      {/* Add in the SVG Logo here  */}
+        <Navbar.Brand href="/" style={{marginLeft: "4vw"}} >
+        React-Bootstrap
+        
+        {/* Set the dimensions with style here  */}
+        {/* <img src={Logo} style={{width: "5rem", minHeight: "2rem"}} /> */}
+        {/* <Logo/> */}
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="" style={{display: "flex", justifyItems: "center",  width: "100%",  margin: "auto"}}>
-            <Nav.Link href="/" style={{marginLeft: "10vw", marginRight: "2vw"}} >Features</Nav.Link>
+          <Nav className="" style={{display: "flex", justifyItems: "center", alignItems: "center",  width: "100%",  margin: "auto"}}>
+            {isSmallScreen ? (
+
+            <Nav.Link href="/" style={{marginRight: "3vw"}} >Features</Nav.Link>
+            
+            )
+            
+            : 
+            (
+            <Nav.Link href="/" style={{marginRight: "3vw", marginLeft: "10vw"}} >Features</Nav.Link>
+
+                
+                
+            )
+            
+            }
+            
+            {/* <Nav.Link href="/" style={{marginRight: "3vw"}} >Features</Nav.Link> */}
             <Nav.Link href="/cancel" style={{marginRight: "3vw"}} >Outdoor</Nav.Link>
             <Nav.Link href="/cancel" style={{marginRight: "3vw"}} >Autumn</Nav.Link>
-            <Nav.Link href="/cancel" style={{marginRight: "3vw"}} >Mountain Gear</Nav.Link>
+            <Nav.Link href="/cancel" style={{marginRight: "3vw"}} > Gear</Nav.Link>
             <Nav.Link href="/" style={{marginRight: "3vw"}} >Winter </Nav.Link>
-           {/* Add in the on click event listener here  */}
-           {/* Wrap this in brackets and only render it if the state variable 
-           
-           that is set my a media query is true otherwise just render the search bar. */}
+
            
            
-           
-           {/* wrap this in the media query variable braces  */}
-           
+           {/* Add in the styling for the mobile search bar here  */}
            {isSmallScreen ? (
-            <div onClick={handleSearchOpen} >
+            <div onClick={handleSearchOpen}   >
            
            <SearchBar onClick={ handleSearchOpen } />
            </div>
            
                ) : (
-      
-            <SearchBar/>
+            
+            // Add in the styling for the search bar positioning here 
+            // outline: "5px solid lime"
+            <div style={{display: "grid", placeItems: "center"}}>
+                <SearchBar/>
+                
+            </div>
       
       )}
       
@@ -154,12 +156,14 @@ const SearchBar = BackToTopButton;
            
            <Modal.Header closeButton >
             
-            <Modal.Title>Search Products </Modal.Title>
+            <Modal.Title style={{display: "flex", justifyItems:"center", marginLeft: "25vw"}} >Search Products </Modal.Title>
            </Modal.Header>
                        
-            <Modal.Body>
+            <Modal.Body  style={{display: "flex", justifyItems: "center", position: "relative"}}>
 
-            <SearchBar/>
+            <div style={{ display: "flex", margin: "0 auto", justifyItems: "center"}} >
+            <SearchBar  />
+            </div>
             
             </Modal.Body>
            </Modal> 
@@ -168,12 +172,23 @@ const SearchBar = BackToTopButton;
            
            
           </Nav>
-          <Nav>
+          <Nav style={{}} >
 
             <Nav.Link href="#" style={{marginRight: "1vw"}} >  
-            {/* <FaShoppingCart style={{fontSize: "1.5rem"}}/> */}
-            <Navbar.Collapse className="justify-content-end">
-                    <div onClick={handleShow} style={{position: "relative"}} ><FaShoppingCart style={{fontSize: "1.5rem"}} /> 
+           
+                                                            {/* THIS COULD CAUSE TROUBLE @!@#!@#!@# */}
+            <Navbar.Collapse className="justify-content-end" style={{ position: "relative"}} >
+
+
+                    {/* Start of conditional Render  */}
+                    
+                    {isSmallScreen ? (
+
+                    
+                    <div onClick={handleShow} style={{position: "relative",   display: "flex", justifyItems: "center"}} >
+                    
+                    
+                    <FaShoppingCart style={{fontSize: "1.5rem", padding: "0", marginTop: "0.2rem", marginBottom: "0.5rem", position: "absolute", left: "44%", top: "50%"  }} /> 
                     
                     {productsCount > 0 ? 
                     
@@ -186,6 +201,32 @@ const SearchBar = BackToTopButton;
                     <div></div>
                         }   
                     </div>
+                    
+                    
+                    )
+                    
+                    : 
+                    
+                    (
+
+                        <div onClick={handleShow} style={{position: "relative"}} >
+                    
+                        <FaShoppingCart style={{fontSize: "1.5rem", padding: "0", margin: "0", transform: "translate(0%, 1vh)"  }} /> 
+                        
+                        {productsCount > 0 ? 
+                        
+                        <>
+                        <div style={{position: "absolute", top: "5%", left: "104%"}}> ({productsCount}) </div>
+                        
+                        </>
+                        
+                        : 
+                        <div></div>
+                            }   
+                        </div>  
+                    )
+                    }
+                    
                 </Navbar.Collapse>
             
             <Modal show={show} onHide={handleClose}>
@@ -216,20 +257,45 @@ const SearchBar = BackToTopButton;
             
             </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-
-                
-
             </Nav.Link>
-            <Nav.Link eventKey={2} href="/profile" style={{fontSize: "0rem"}} >
-            <PersonIcon style={{fontSize: "2.1rem"}} />
+          
+          {/* Add in the conditional rendering here  */}
+          
+          
+          {isSmallScreen ? (
+
+             <Nav.Link eventKey={2} href="/list" style={{fontSize: "0rem", display: "inline-block"}} >
             
-      
+          
+            <ListIcon style={{fontSize: "2.1rem", display: "inline-block", transform: "translate(41vw, 0%)"}} />
+            
             </Nav.Link>
-            <Nav.Link eventKey={2} href="/list" style={{fontSize: "0rem"}} >
+            
+          )
+          
+          : 
+          
+          (
 
+            <Nav.Link eventKey={2} href="/list" style={{fontSize: "0rem", transform: "translate(0%)"}} >
+            
+          
+            <ListIcon style={{fontSize: "2.1rem"}}  />
+            
+            </Nav.Link>
+            
+            
+          )
+          
+          }
+          
+          
+            {/* <Nav.Link eventKey={2} href="/list" style={{fontSize: "0rem", outline: "7px solid pink"}} >
+            
+          
             <ListIcon style={{fontSize: "2.1rem"}} />
             
-            </Nav.Link>
+            </Nav.Link> */}
 
           </Nav>
         </Navbar.Collapse>

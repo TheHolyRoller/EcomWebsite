@@ -19,26 +19,26 @@ const [values, setValues] = useState ( {text: ''});
 const [userInput, setUserInput] = useState(""); 
 
 
-const [mappedValue, setMappedValue] = useState (0)
+const [mappedValue, setMappedValue] = useState (0);
+
+
+const [enterPressed, setEnterPressed] = useState(false);
+
+
+
+
 
 
 const validInputs = [
   {input: "apple", value: 100},
-  {input: "banana", value: 0},
-  {input: "carrot", value: 30},
-  {input: "date", value: 60},
-  {input: "eggplant", value: 50}
+  {input: "headphones", value: 0},
+  {input: "phones", value: 30},
+  {input: "wifi", value: 60},
+  {input: "watches", value: 50}
 ];
 
 
 
-useEffect(() => {
-
-window.addEventListener("scroll", () => {
-    
-})
-
-}, [])
 
 
 
@@ -90,10 +90,6 @@ useEffect ( () => {
   }
   
 }, [values, mappedValue,  userInput]);
-
-
-
-
 
 
 
@@ -166,6 +162,10 @@ const scrollToTop = () => {
 
     const amount = scrollableSpace * percentage;
 
+
+    console.log("this is the AMOUNT"); 
+    console.log(amount); 
+    
     
     window.scrollTo({
         top: amount, 
@@ -174,18 +174,40 @@ const scrollToTop = () => {
     })
 }
 
+
+const handleKeyDown = (event) => {
+  // If the event key is 'Enter', set the enterPressed state to true and call another function
+  if (event.key === 'Enter') {
+    setEnterPressed(true);
+    
+    scrollToTop(); 
+    // doSomething();
+  }
+};
+
+useEffect(() => {
+  // Add the event listener when the component mounts
+  window.addEventListener('keydown', handleKeyDown);
+
+  // Remove the event listener when the component unmounts
+  return () => {
+    window.removeEventListener('keydown', handleKeyDown);
+  };
+}, []);
+
   
   return (
   
     <div style={{ position: "relative"}} >
     
-    
-    <input type="text" onChange={handleChange} placeholder='search' style={{width: '11rem', minHeight: "2rem",  color: "black", transform: "translate(-1rem, 1rem)"}}>    
+
+    <input type="text" onChange={handleChange} placeholder='search' style={{width: '11rem', minHeight: "2rem",  color: "white", borderRadius: "5%",  }}>    
     </input>
-    <SearchIcon onClick={scrollToTop} style={{position: "absolute", right: "10%", top: "34%"}}  />
+    <SearchIcon onClick={scrollToTop} style={{position: "absolute", right: "4%", top: "17%", color: "lightgrey", backgroundColor: "none"}}  />
     
     </div>
-  )
+  );
+  
 }
 
 export default BackToTopButton

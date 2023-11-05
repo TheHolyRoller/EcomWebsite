@@ -170,6 +170,12 @@ function ChatComponent() {
 
   return (
     <div className="ChatComponent">
+    
+    <h3 style={{display: 'block', }} >
+    Leave a Review! 
+      
+    </h3>
+    
     <ChatBox/>
     <Box>
       <Box display="flex" alignItems="center">

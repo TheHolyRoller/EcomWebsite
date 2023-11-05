@@ -15,6 +15,7 @@ import { dataBase } from '../utilities/ChatComponent';
 import { app } from '../utilities/ChatComponent'; 
 
   
+  
   function Signup() {
     const [input, setInput] = useState(""); 
     
@@ -65,11 +66,6 @@ const validateEmail = (input) => {
     // Set the input state to the value of the input field
     setInput(e.target.value);
   };
-      
-      
-      
-      
-      
       
       
       const handleKeyPress = (e) => {

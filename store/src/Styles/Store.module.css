@@ -1,0 +1,38 @@
+
+:root{
+
+overflow-x: hidden;
+    
+    
+}
+
+
+body{
+
+overflow-x: hidden !important;
+
+}
+
+
+@media(max-width: 600px){
+
+    
+    /* Select everything here  */
+    #mainContainer{
+        overflow-x: hidden !important;
+                
+    }
+    
+    
+    body{
+        
+    display: grid; 
+    
+    justify-content: center;
+    /* max-width: 99vw; */
+    overflow-x: hidden !important;
+    }
+    
+}
+
+

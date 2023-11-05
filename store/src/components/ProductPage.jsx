@@ -77,6 +77,9 @@ List of polishing Tasks:
 
         import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
         import { faHeart } from '@fortawesome/free-regular-svg-icons';
+        // import { FaShoppingCart } from "react-icons/fa";
+        
+
 
         import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 
@@ -111,6 +114,31 @@ import ChatComponent from '../utilities/ChatComponent';
 
 
  export default function ProductPage() {
+
+// Add in the media query here 
+const query = "(max-width: 768px)";
+
+// Create a MediaQueryList object
+const mql = window.matchMedia(query);
+
+// Check if the media query matches
+const isSmallScreen = mql.matches;
+
+let marginBottom; 
+
+
+if(isSmallScreen){
+  
+  marginBottom = "0vh"; 
+  
+}
+
+
+else{
+
+  marginBottom = "24vh"; 
+  
+}
 
 
   const initialHasRun = new URLSearchParams(window.location.search).has("hasRun") || false;
@@ -190,15 +218,16 @@ import ChatComponent from '../utilities/ChatComponent';
         
      
        return (
-         <div className="mainContainer" >
+         <div className="mainContainer" style={{marginBottom}}  >
+            
             <div className="imageZoomPositionalContainer" >
-            {/* </ callback={logHelloWorld} delay={3000} /> */}
 
+              
             <div className="imageZoomContainer" >
-              
             <ImageMag/>
+            
+            
             </div>
-              
               
             </div>    
 
@@ -207,8 +236,7 @@ import ChatComponent from '../utilities/ChatComponent';
             <div id="productNameContainer" >
             
             <div id="titleFirstSection">
-              Citizen
-              <ChatComponent/>
+              {/* Citizen */}
 
             </div>
             
@@ -246,6 +274,7 @@ import ChatComponent from '../utilities/ChatComponent';
             
             <div id="productDetailMeta">
               Echo Drive H504 
+              
             </div>
             
             </div>
@@ -267,6 +296,7 @@ import ChatComponent from '../utilities/ChatComponent';
             
             <div id="productDetailMeta">
               Echo Drive H504 
+              {/* <ChatComponent/> */}
             </div>
             
             </div>
@@ -288,6 +318,10 @@ import ChatComponent from '../utilities/ChatComponent';
 
             </div>
             </div>
+            
+            {/* Add in a container for the review section here  */}
+            
+            
             </div>
             
 
@@ -304,7 +338,7 @@ import ChatComponent from '../utilities/ChatComponent';
             
             
             <div id="productButton" >
-            ADD TO CART 
+            {/* ADD TO CART  */}
             { productQuantity > 0 ?
                             <>
                                 <Form as={Row}>
@@ -317,7 +351,15 @@ import ChatComponent from '../utilities/ChatComponent';
                                 <Button variant="danger" onClick={() => cart.deleteFromCart(product.id)} className="my-2">Remove from cart</Button>
                             </>
                             :
-                            <Button variant="primary" onClick={() => cart.addOneToCart(product.id)}>Add To Cart</Button>
+                            <Button variant="primary" onClick={() => cart.addOneToCart(product.id)} style={{backgroundColor: "lightgrey"}} >
+                            ADD TO CART
+                            
+                            {/* Add in the shopping basket icon here  */}
+                    {/* <FaShoppingCart style={{fontSize: "1.5rem", padding: "0", marginTop: "0.2rem", marginBottom: "0.5rem", position: "absolute", left: "44%", top: "50%"  }} />  */}
+                          
+                          
+                          
+                            </Button>
                         }
             
             </div>
@@ -349,9 +391,17 @@ import ChatComponent from '../utilities/ChatComponent';
             
             
             </div>
+                        
+              {/*  */}
+            <div>
+            
 
-
+            </div>
+            {/* <h3 style={{display: "block"}} >Leave a Review!</h3> */}
             </div>  
+            
+            
+            <ChatComponent/>
               
             </div>
               

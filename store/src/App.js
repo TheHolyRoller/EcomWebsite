@@ -23,6 +23,7 @@ import { PRODUCTS } from './Data/products';
 import Profile from './components/Profile';
 
 
+
 import ProductPage from './components/ProductPage';
 import CardList from './components/CardList';
 
@@ -43,6 +44,10 @@ import Signup from './components/Signup';
 
 import Store from './pages/Store';
 
+import WinterStore from './pages/winterStore'; 
+
+import HackingStore from './pages/hackingStore'; 
+
 
 // Import the footer pages here 
 import Terms from './components/FooterPages/Terms'; 
@@ -53,13 +58,30 @@ import PrivacyPolicy from './components/FooterPages/PrivacyPolicy';
 import List from './components/List'; 
 
 import ContactForm from './components/ContactForm'; 
+import { hackingPRODUCTS } from './Data/hackingProducts';
+import { winterPRODUCTS } from './Data/winterPRODUCTS';
 
 
 function App() {
   
   let productId = useParams(); 
+  
+  console.log("this is the PRODUCT ID FROM THE APP FILE #@@@@@@"); 
+  console.log(productId); 
+  
 
   const product = PRODUCTS.find((product) => product.id === productId); 
+  const hackingProduct = hackingPRODUCTS.find((product) => product.id === productId); 
+  const winterProduct = winterPRODUCTS.find((product) => product.id === productId); 
+
+
+
+  console.log("JUST SEEING WHAT PRODUCT CONTAINS %%%%%%%"); 
+  console.log(product); 
+  
+
+
+  
   
   return (
   <>
@@ -75,11 +97,12 @@ function App() {
             <Route path="privacypolicy" element={<PrivacyPolicy/>}/>
             <Route path="terms" element={<Terms/>} />
             <Route path="contact" element={<ContactForm/>}/>
-            <Route path=":id" element={<ProductPage product={product}  />}>
-               
-              
-            </Route>
-            <Route path="/profile" element={<Profile/>}/>
+
+            <Route path="winterStore" element={<WinterStore />}/>
+            <Route path="hackingStore" element={<HackingStore product={product} />}/>
+            
+            <Route path=":id" element={<ProductPage product={product}  />}/>
+
           </Routes>
         </BrowserRouter>
         <Footer/>

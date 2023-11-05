@@ -1,6 +1,8 @@
 import React from "react";
 
 
+
+
 const Message = ( props ) => {
 
 console.log("WHY IS PROPS NOT WORKING"); 

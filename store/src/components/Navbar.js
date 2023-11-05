@@ -23,6 +23,8 @@ function NavbarComponent() {
 
     const checkout = async () => {
     // This was 4000
+    
+    console.log('is this being clicked on and is this firing ')
         await fetch('http://localhost:4000/checkout', {
             method: "POST",
             headers: {

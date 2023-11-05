@@ -41,7 +41,8 @@ import { useState, useContext, useEffect, useRef } from 'react';
 
 
 
-import Logo from '../assets/LightLogo.svg'; 
+import Logo from '../assets/products/LightLogo.svg'; 
+
 
 
 function CollapsibleExample() {
@@ -61,15 +62,14 @@ const SearchBar = BackToTopButton;
     const cart = useContext(CartContext);
 
     const [show, setShow] = useState(false);
-    
     const [showSearch, setShowSearch] = useState(false); 
+    
     
     const handleSearchClose = () => setShowSearch(false); 
     const handleSearchOpen = () => setShowSearch(true); 
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
 
 
     const checkout = async () => {
@@ -93,6 +93,7 @@ const SearchBar = BackToTopButton;
 
     const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
     
+    
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -102,9 +103,7 @@ const SearchBar = BackToTopButton;
         <Navbar.Brand href="/" style={{marginLeft: "4vw"}} >
         React-Bootstrap
         
-        {/* Set the dimensions with style here  */}
-        {/* <img src={Logo} style={{width: "5rem", minHeight: "2rem"}} /> */}
-        {/* <Logo/> */}
+        
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -126,16 +125,16 @@ const SearchBar = BackToTopButton;
             }
             
             {/* <Nav.Link href="/" style={{marginRight: "3vw"}} >Features</Nav.Link> */}
-            <Nav.Link href="/cancel" style={{marginRight: "3vw"}} >Outdoor</Nav.Link>
-            <Nav.Link href="/cancel" style={{marginRight: "3vw"}} >Autumn</Nav.Link>
-            <Nav.Link href="/cancel" style={{marginRight: "3vw"}} > Gear</Nav.Link>
-            <Nav.Link href="/" style={{marginRight: "3vw"}} >Winter </Nav.Link>
+            <Nav.Link href="/winterStore" style={{marginRight: "3vw"}} >Tech Gear</Nav.Link>
+            <Nav.Link href="/hackingStore" style={{marginRight: "3vw"}} >Smart Gear</Nav.Link>
+            <Nav.Link href="/terms" style={{marginRight: "3vw"}} > Terms</Nav.Link>
+            {/* <Nav.Link href="/" style={{marginRight: "3vw"}} >Winter </Nav.Link> */}
 
            
            
            {/* Add in the styling for the mobile search bar here  */}
            {isSmallScreen ? (
-            <div onClick={handleSearchOpen}   >
+            <div onClick={handleSearchOpen}    >
            
            <SearchBar onClick={ handleSearchOpen } />
            </div>
@@ -144,7 +143,7 @@ const SearchBar = BackToTopButton;
             
             // Add in the styling for the search bar positioning here 
             // outline: "5px solid lime"
-            <div style={{display: "grid", placeItems: "center"}}>
+            <div style={{display: "grid", placeItems: "center", marginLeft: "3rem" }}>
                 <SearchBar/>
                 
             </div>

@@ -9,17 +9,29 @@ import SearchIcon from '@mui/icons-material/Search';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
 import Link from '@mui/material/Link';
 
+
+import { addDoc, getFirestore, collection } from 'firebase/firestore';
 
 
 import { dataBase } from "../utilities/ChatComponent";
 import Filter from "bad-words";
 const filter = new Filter();
+
+
+
 const ContactForm = () => {
+  
+
   const classes = 'myclass';
+  
+  
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -27,10 +39,19 @@ const ContactForm = () => {
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [messageError, setMessageError] = useState("");
+  
+  
+  
+  
   const handleNameChange = (e) => {
     setName(e.target.value);
     setNameError("");
   };
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+    // setLastNameError("");
+  };
+  
   
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -44,7 +65,12 @@ const ContactForm = () => {
     setMessage(e.target.value);
     setMessageError("");
   };
-  const handleSubmit = (e) => {
+  
+
+   
+   
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let isValid = true;
     if (!name) {
@@ -58,13 +84,7 @@ const ContactForm = () => {
       setEmailError("Email is invalid");
       isValid = false;
     }
-    if (!phone) {
-      setPhoneError("Phone number is required");
-      isValid = false;
-    } else if (!/^\d{1,20}$/.test(phone)) {
-      setPhoneError("Phone number is invalid");
-      isValid = false;
-    }
+ 
     if (!message) {
       setMessageError("Message is required");
       isValid = false;
@@ -75,29 +95,45 @@ const ContactForm = () => {
       setMessageError("Message contains profanity");
       isValid = false;
     }
+    
     if (isValid) {
-      dataBase.ref("contacts").push({
-        name,
-        email,
-        phone,
-        message,
-      });
-      setName("");
+
+      
+    // Add in the await code here from the other file 
+    await  addDoc(collection(dataBase,  "newCollection"), {
+      name,
+      email,
+      phone,
+      message,
+
+  })
+  
+  setName("");
       setEmail("");
       setPhone("");
       setMessage("");
       alert("Your message has been sent. Thank you!");
+
+      
     }
   };
+  
+  
   return (
     <div className={classes.root}>
-      <Typography variant="h4" className={classes.title}>
-      <Link href="/contact" style={{textDecoration: "none", color: "#9ca6b1"}}>
+     
+      <form className={classes.form} onSubmit={handleSubmit} style={{display: "grid", width: "100%", justifyContent: "center" }} >
+      <Typography variant="h4" className={classes.title} style={{marginTop: "3rem"}} >
 
-        Contact Us
-          </Link>
-      </Typography>
-      <form className={classes.form} onSubmit={handleSubmit}>
+        
+      Contact Us
+
+</Typography>
+      <Grid  sx={{ }} style={{display: "grid", gridTemplateColumns: "1fr"}}  container rowSpacing={ {xs: 1, md: 2}} >
+      
+      <Grid sx={{background: ""}}  style={{display: "block"}}  >
+      
+      
         <TextField
           label="Name"
           variant="outlined"
@@ -107,7 +143,14 @@ const ContactForm = () => {
           helperText={nameError}
           className={classes.field}
           required
+          
+          style={{display: "block"}}
         />
+          </Grid>
+        
+          <Grid sx={{background: ""}} >
+        
+        
         <TextField
           label="Email"
           variant="outlined"
@@ -118,6 +161,11 @@ const ContactForm = () => {
           className={classes.field}
           required
         />
+          </Grid>
+        
+        
+          <Grid sx={{}}  >
+        
         <TextField
           label="Phone Number"
           variant="outlined"
@@ -127,7 +175,16 @@ const ContactForm = () => {
           helperText={phoneError}
           className={classes.field}
           required
-        />
+          />
+          </Grid>
+        
+        
+        
+        <Grid>
+        
+        
+        
+        
         <TextField
           label="Message"
           variant="outlined"
@@ -140,6 +197,11 @@ const ContactForm = () => {
           rows={4}
           required
         />
+          </Grid>
+        
+        
+        
+        <Grid>
         <Button
           variant="contained"
           color="primary"
@@ -148,6 +210,8 @@ const ContactForm = () => {
         >
           Send
         </Button>
+        </Grid>
+          </Grid>
       </form>
     </div>
   );

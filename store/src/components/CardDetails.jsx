@@ -1,16 +1,18 @@
+/** 
+
+
+
+*/
+
+
 import React from 'react';
 import { useParams } from 'react-router-dom'; // import the useParams hook from react-router-dom
-// import data from './data'; // import the javascript object from another file
-// import PRODUCTS from '../Data/products'; 
-
-
 import { PRODUCTS } from '../Data/products';
-// A function component that renders the details of a selected item based on the url path
-function CardDetails() {
-  // A variable that holds the id parameter from the url path
-  const { id } = useParams();
 
-  // A variable that holds the item that matches the id parameter
+function CardDetails() {
+
+  const { id } = useParams();
+  
   const item = PRODUCTS.find((item) => item.id === Number(id));
 
 console.log(item); 

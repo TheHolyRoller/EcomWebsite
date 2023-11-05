@@ -53,6 +53,45 @@ margin: 0px;
 
 
 /* Add in the remainder of the classes here  */
+.pageLink{
+
+
+transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+color: #9ca6b1 !important;
+
+
+    
+    
+}
+
+
+.pageLink:hover{
+
+   font-size: 1.25rem; 
+
+   
+   color: #ffffff !important;
+   
+   
+    
+    
+}
+
+
+.socialMediaLink{
+
+
+transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    
+}
+
+
+.socialMediaLink:hover{
+    
+    scale: 1.09;
+    
+}
 
 
 

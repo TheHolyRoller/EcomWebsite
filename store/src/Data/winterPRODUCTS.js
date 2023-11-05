@@ -1,86 +1,93 @@
-// import product1 from "./assets/products";
-import product1 from '../assets/products/Bag.jpg'; 
+import product1 from "../assets/HackingProducts/MechanicalKeyboard.jpg"; 
 
-import product2 from '../assets/products/BlackShoe.jpg'; 
-import product3 from '../assets/products/BlueHat.jpg'; 
-import product4 from '../assets/products/BrownHat.jpg';
-import product5 from '../assets/products/Hat.jpg'; 
-import product6 from '../assets/products/RedHat.jpg'; 
-import product7 from '../assets/products/Sunglasses.jpg'; 
-import product8 from '../assets/products/TissotWatch.jpg'; 
+import product2 from "../assets/HackingProducts/GamingHeadset.jpg"; 
+
+import product3 from '../assets/HackingProducts/TrackingPad.jpg'; 
+
+import product4 from "../assets/HackingProducts/SportsWatch.jpg"; 
+
+import product5 from '../assets/HackingProducts/BombDectectingJacket.jpg'; 
+
+import product6 from '../assets/HackingProducts/RearViewShades.jpg'; 
+
+import product7 from '../assets/HackingProducts/BugDetector.jpg'; 
+
+import product8 from '../assets/HackingProducts/BugDetector.jpg'; 
 
 
-// ALL THESE IDS ARE FROM THE TUTORIAL EXAMPLE THEY ARE IDENTICAL 
-
+import product9 from '../assets/HackingProducts/RubberDucky.jpg'; 
 
 
 export const winterPRODUCTS = [
   {
-    id: "price_1NC2XCECwV7seoblbhR4X48B",
-    productName: "IPhone",
-    price: 999.0,
+    id: "price_1NLTS0ECwV7seoblF9NuuL6i",
+    productName: " Mechanical Keyword",
+    price: 80.0,
     productImage: product1,
     productClass: "Iphones"
   },  
   {
-    id: "price_1NC2WoECwV7seoblAvg1TCWn",
-    productName: "Macbook Pro 2022 (M1)",
+    id: "price_1NLTRWECwV7seobllf9FtKgU",
+    productName: " Gaming Headset",
     price: 1999.0,
     productImage: product2,
     productClass: "Macs"
     
     
+    
   },
   {
   
-    id: "price_1NC2WQECwV7seoblJcR9eEo2",
-    productName: "Cannon M50 Camera",
-    price: 699.0,
+    id: "price_1NLTSFECwV7seoblJGrWFYf8",
+    productName: "Track Pad",
+    price: 40.0,
     productImage: product3,
     productClass: "Cameras"
     
   },
   {
-    id: "price_1NC2VUECwV7seoblE4HmCCv5",
-    productName: "WLS Van Gogh Denim Jacket",
-    price: 228.0,
+  
+    id: "price_1NLTScECwV7seoblLvpfqzWS",
+    productName: "Sports Watch",
+    price: 120.0,
     productImage: product4,
     productClass: "Shoes"
     
   },
   {
-    id: "price_1NC2ULECwV7seoblVFQrkjtz",
-    productName: "LED Light Strips",
-    price: 19.99,
+    id: "price_1NLTTPECwV7seoblGld0P3tT",
+    productName: "Bomb Detector Dinner Jacket",
+    price: 450,
     productImage: product5,
-    productClass: "Lights"
+    productClass: "Weapons"
     
   },
   {
-    id: "price_1NC2TlECwV7seoblKLcqkZyo",
-    productName: "SPECTRUM LS TEE",
+    id: "price_1NLTToECwV7seobl1VZUe6vr",
+    productName: "Rear View Shades",
     price: 68.0,
     productImage: product6,
     productClass: "Shirts"
     
   },
   {
-    id: "price_1NC2SAECwV7seoblsUpYIjNd",
-    productName: "AUTO SERVICE SHIRT by GOLF WANG",
+    id: "price_1NLTUHECwV7seobllVJHTs1z",
+    productName: "Bug Detector",
     price: 120.0,
     productImage: product7,
-    productClass: "Jackets"
+    productClass: "Gadgets"
     
   },
   {
   
-    id: "price_1N9QWMECwV7seobltcqPgIAW",
-    productName: "DON'T TRIP UNSTRUCTURED HAT",
-    price: 40.0,
+    id: "price_1NLTUzECwV7seoblZPDucMt1",
+    productName: "Rubber Ducky",
+    price: 60.0,
     productImage: product8,
     productClass: "Hats"
     
   },
+
 ];
 
 

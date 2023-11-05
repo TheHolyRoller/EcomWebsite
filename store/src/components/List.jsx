@@ -95,7 +95,7 @@ function List(props) {
       List 
       {listCount > 0 ? 
         <>
-     <p>Items in your cart:</p>
+     <p>Items in your list!:</p>
         
         {/* Find out why it''s saying this is not a function  */}
      {myProduct.map((currentProduct, idx) => (
@@ -112,9 +112,8 @@ function List(props) {
           Remove from List 
          </Button>
          </>
-         
           :
-          <h1>There are no items in your cart!</h1>
+          <h1 style={{minHeight: "70vh"}} >There are no items in your list!</h1>
       }
       
     </div>

@@ -3,6 +3,30 @@ import React from 'react'
 import { useEffect, useState, useRef } from 'react'; 
 
  export const Scroll = () => {
+ 
+  
+//  Add in a media query here 
+const query = "(max-width: 768px)";
+
+// Create a MediaQueryList object
+const mql = window.matchMedia(query);
+
+// Check if the media query matches
+const isSmallScreen = mql.matches;
+
+let display; 
+
+if(isSmallScreen){
+  
+display = "none"; 
+  
+}
+
+else{
+  display = 'auto'
+}
+
+ 
 
   const [backToTopButton, setBackToTopButton ] = useState(true); 
   const scrollToTop = () => {
@@ -32,9 +56,9 @@ import { useEffect, useState, useRef } from 'react';
     
     }, [])
   return (
-    <div style={{}} >
+    <div>
   {backToTopButton && (
-    <button id="button" onClick={scrollToTop} style={{position: "fixed", bottom: "50px", right: "50px", height: "50px", width: "50px", fontSize: "50px"}}>^ </button>
+    <div id="button" onClick={scrollToTop} style={{position: "fixed", bottom: "50px", right: "50px", height: "40px", width: "50px", fontSize: "60px", borderRadius: "50%", cursor: "pointer", display }}>^ </div>
     )}
     
     </div>
